@@ -1,0 +1,53 @@
+From bd4fad830023d63a3c41e5111d43f2df10be7b10 Mon Sep 17 00:00:00 2001
+From: Bartosz Stebel <bartoszstebel@gmail.com>
+Date: Wed, 20 Nov 2019 06:17:31 +0100
+Subject: [PATCH] remove networking support, set proper bootcmd
+
+---
+ configs/zynq_z_turn_defconfig | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/configs/zynq_z_turn_defconfig b/configs/zynq_z_turn_defconfig
+index 0cba1274ba..0aadac1807 100644
+--- a/configs/zynq_z_turn_defconfig
++++ b/configs/zynq_z_turn_defconfig
+@@ -11,6 +11,8 @@ CONFIG_FIT=y
+ CONFIG_FIT_SIGNATURE=y
+ CONFIG_FIT_VERBOSE=y
+ CONFIG_IMAGE_FORMAT_LEGACY=y
++CONFIG_BOOTCOMMAND="run uenvboot"
++CONFIG_DISPLAY_BOARDINFO_LATE=y
+ CONFIG_SPL_STACK_R=y
+ CONFIG_SPL_OS_BOOT=y
+ CONFIG_SPL_SPI_LOAD=y
+@@ -23,11 +25,10 @@ CONFIG_CMD_MMC=y
+ CONFIG_CMD_SF=y
+ CONFIG_CMD_USB=y
+ # CONFIG_CMD_SETEXPR is not set
+-CONFIG_CMD_TFTPPUT=y
+ CONFIG_CMD_CACHE=y
+ CONFIG_CMD_EXT4_WRITE=y
+ CONFIG_DEFAULT_DEVICE_TREE="zynq-zturn"
+-CONFIG_NET_RANDOM_ETHADDR=y
++# CONFIG_NET is not set
+ CONFIG_SPL_DM_SEQ_ALIAS=y
+ CONFIG_DFU_MMC=y
+ CONFIG_DFU_RAM=y
+@@ -43,11 +44,7 @@ CONFIG_SPI_FLASH_BAR=y
+ CONFIG_SPI_FLASH_SPANSION=y
+ CONFIG_SPI_FLASH_STMICRO=y
+ CONFIG_SPI_FLASH_WINBOND=y
+-CONFIG_PHY_MARVELL=y
+-CONFIG_PHY_REALTEK=y
+-CONFIG_PHY_XILINX=y
+-CONFIG_MII=y
+-CONFIG_ZYNQ_GEM=y
++CONFIG_DM_ETH=y
+ CONFIG_DEBUG_UART_ZYNQ=y
+ CONFIG_ZYNQ_SERIAL=y
+ CONFIG_ZYNQ_QSPI=y
+@@ -62,3 +59,4 @@ CONFIG_USB_GADGET_PRODUCT_NUM=0x0300
+ CONFIG_CI_UDC=y
+ CONFIG_USB_GADGET_DOWNLOAD=y
+ CONFIG_USB_FUNCTION_THOR=y
++CONFIG_REGEX=y
